@@ -1,4 +1,4 @@
-import Post from "./Child";
+import Post from "./Post";
 
 function Twitter() {
     return ( 

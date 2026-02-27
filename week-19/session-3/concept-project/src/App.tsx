@@ -1,6 +1,6 @@
 import Demo1 from "./components/Demo1";
 import Greeting from "./components/Greeting";
-import Twitter from "./components/Parent";
+import Twitter from "./components/Twitter";
 import PostList from "./components/PostList";
 import UserList from "./components/UserList";
 import Welcome from "./components/Welcome";

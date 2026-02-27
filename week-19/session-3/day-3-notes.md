@@ -77,3 +77,21 @@ const App = () => {
 
 - props is properties
 - to pass properties from Parent Component to Child Component
+
+- Create Component Named Twitter.tsx (Parent Component)
+- Create Component named Post.tsx (Child Component)
+
+- Add Twitter component in App.tsx (import)
+
+- means App --> Twitter --> Post
+- under twitter component i am creating multiple post by reusing post compoent and passing different data to each post using Props
+
+*in this create component called comments*
+
+- use props to pass different comments and author
+- just think about how to use comments as a seperate component and use under the post components
+
+- App -> Twitter -> Post -> Comment
+*Think how we can implement*
+
+**Real time implementation we will do using State**
