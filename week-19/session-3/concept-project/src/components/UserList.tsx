@@ -1,11 +1,9 @@
 import React from "react";
-
 type User= {
     id:number,
     name: String,
     age:number
 }
-
 function UserList() {
     const users:User[] = [
         {id:1,name:"alex",age:22},
