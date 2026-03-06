@@ -1,10 +1,10 @@
-import FormExample from "./components/FormExample"
+import UsersList from "./components/UsersList"
 
 function App() {
 
   return (
     <>
-      <FormExample />
+      <UsersList />
     </>
   )
 }
