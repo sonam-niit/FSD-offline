@@ -218,3 +218,12 @@ export default Counter;
 ```
 
 - include component in App.tsx and check output in Browser
+
+### UseCallback
+
+- React.memo: remembers componet not rerender if props not changed
+    - control component from rerender
+
+- useCallback: remeber function (not recreate)
+    - controlling function
+    - usecallback keeps the same function refrences between 2 renders
