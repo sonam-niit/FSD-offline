@@ -140,3 +140,81 @@ function Dashboard() {
 export default Dashboard;
 ```
 - means we are using same context in Header as well as Dashboard without using props
+
+### UseReducer Hook
+
+- useReducer hook woks with 3 parts
+  + state: current data
+  + Action: what you wnat to do
+  + Reducer Function: decides how to update state
+
+- const [state,dispatch]= useReducer()(reducer,initialState)
+
+  + state -> current state
+  + dispatch -> function to send actions
+  + reducer -> function to update state
+  + initialState -> stating value
+
+
+- to work with this hook we need to create ActionsTypes, Reducer, in component use useReducerHook
+
+1. Create folder named types/action.ts file
+
+```ts
+export type Action =
+    { type: "increment" } |
+    { type: "incrementByNum"; payload: number } |
+    { type: "decrement" } |
+    { type: "decrementByNum"; payload: number } |
+    { type: "reset" }
+```
+
+2. Create Reducer function under reducers folder
+
+```ts
+import type { Action } from "../types/Actions";
+
+//(state,action) -> return a new state
+export function reducer(state: number, action: Action): number {
+    switch (action.type) {
+        case "increment":
+            return state + 1;
+        case "incrementByNum":
+            return state + action.payload
+        case "decrement":
+            return state - 1;
+        case "decrementByNum":
+            return state - action.payload;
+        case "reset":
+            return 0;
+        default:
+            return state;
+    }
+}
+```
+
+- use under component Counter
+
+```tsx
+import { useReducer } from "react";
+import { reducer } from "../reducers/Reducuer";
+
+function Counter() {
+    const [count, dispatch] = useReducer(reducer, 0);
+    return (
+        <>
+            <h2>Count: {count}</h2>
+
+            <button onClick={() => dispatch({ type: "increment" })}>increment</button>
+            <button onClick={() => dispatch({ type: "incrementByNum", payload: 5 })}>incrementBy5</button>
+            <button onClick={() => dispatch({ type: "decrement" })}>decrement</button>
+            <button onClick={() => dispatch({ type: "decrementByNum", payload:3 })}>decrementBy3</button>
+            <button onClick={() => dispatch({ type: "reset" })}>reset</button>
+        </>
+    );
+}
+
+export default Counter;
+```
+
+- include component in App.tsx and check output in Browser

@@ -1,3 +1,4 @@
+import Counter from "./components/Counter"
 import Dashboard from "./components/Dashboard"
 import Header from "./components/Header"
 
@@ -6,6 +7,7 @@ function App() {
     <>
       <Header />
       <Dashboard />
+      <Counter />
     </>
   )
 }
