@@ -25,6 +25,7 @@ function UseMemoDemo() {
     const test = useMemo(()=>{
         return process(text)
     },[text])
+    
     return (
         <div>
             <h3>Use Memo HookDemo</h3>
