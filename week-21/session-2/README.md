@@ -103,3 +103,110 @@ export default Counter;
 ```
 - include it in App.tsx and check how it works.
 - this helkps us to utilize same business logic in multiple components
+
+### portals
+
+![portal](images/Portal.png)
+
+- go to index.html add one seperate div
+- <div id="modal-root"></div>
+
+# for launching model
+- create modal.tsx
+
+```tsx
+import ReactDOM from "react-dom"
+function Modal() {
+    const modalRoot= document.getElementById("modal-root") as HTMLElement;
+    return ReactDOM.createPortal(<div style={{
+            position: "fixed",
+            top:"40%",
+            left:"40%",
+            background:"white",
+            padding:"20px",
+            border: "1px solid black"
+        }}>
+            <h2>Modal Window</h2>
+            <p>This is rendering using Portal</p>
+        </div>, modalRoot)
+}
+
+export default Modal;
+```
+
+- render the model based on Condiition update App.tsx
+
+```tsx
+import { useState } from "react"
+import Modal from "./components/Modal";
+
+function App() {
+const [show,setShow]=useState(false);
+  return (
+    <>
+      <button onClick={()=>setShow(true)}>Show Model</button>
+      {show && <Modal/>}
+    </>
+  )
+}
+
+export default App
+```
+
+- if you want to include Bootstrap Modal
+
+- update bootstrap libraries inside index.html'
+- Create BootstrapModel.tsx file
+
+```tsx
+import ReactDOM from "react-dom"
+function BootstraModal() {
+    const modalRoot = document.getElementById("modal-root") as HTMLElement;
+    return ReactDOM.createPortal(
+        <div>
+            
+            <div className="modal fade" id="exampleModal" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h1 className="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            Do you want to continue?
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" className="btn btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        , modalRoot)
+}
+
+export default BootstraModal;
+```
+
+- to include inside app.tsx
+
+```tsx
+import { useState } from "react"
+import BootstraModal from "./components/BootstrapModal";
+
+function App() {
+const [show,setShow]=useState(false);
+  return (
+    <>
+      <button type="button" className="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onClick={()=>setShow(true)}>
+                Launch demo modal
+            </button>
+      {show && <BootstraModal />}
+    </>
+  )
+}
+
+export default App
+
+```
