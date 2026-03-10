@@ -4,7 +4,7 @@ function UserList() {
     const {data,loading,error}=
     useFetch<any[]>("https://jsonplaceholder.typicode.com/users");
     return ( 
-        <>
+        <> 
             {
                 loading?(
                     <p>Loading.........</p>
