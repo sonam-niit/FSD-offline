@@ -20,6 +20,7 @@ function UseMemoDemo() {
     }
 
     const result=calculation(count); //calling calculation
+
     return (
         <div>
             <h3>Use Memo HookDemo</h3>
@@ -55,3 +56,50 @@ const result = useMemo(()=>{
 
 - check in console 
 - if input change then it will not trigger the function but if count changes it will trigger and result will re render.
+
+
+### Custom Hooks
+
+- understand
+
+![Custom Hook](images/custom-hook.png)
+
+- create CustomHook: useCounter.ts
+
+```ts
+import { useState } from "react"
+
+export const useCounter = (initialValue: number=0)=>{
+
+    const [count,setCount]=useState<number>(initialValue);
+
+    const increment = ()=>setCount(prev=>prev+1);
+    const decrement = ()=>setCount(prev=>prev-1);
+    const reset = ()=>setCount(initialValue);
+
+    return {count,increment,decrement,reset}
+}
+```
+
+- use inside Counter Component
+
+```tsx
+import { useCounter } from "./useCounter";
+
+function Counter() {
+    const {count,increment,decrement,reset}=useCounter(0);
+    return (
+        <>
+            <h2>Count: {count}</h2>
+
+            <button onClick={increment}>+</button>
+            <button onClick={decrement}>-</button>
+            <button onClick={reset}>Reset</button>
+        </>
+      );
+}
+
+export default Counter;
+```
+- include it in App.tsx and check how it works.
+- this helkps us to utilize same business logic in multiple components

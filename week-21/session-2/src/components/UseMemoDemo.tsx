@@ -11,11 +11,20 @@ function UseMemoDemo() {
         }
     }
 
+    const process = (data:string)=>{
+        console.log("calculating another.......")
+        for(let i=0;i<100000000000;i++){
+            return data.toUpperCase();
+        }
+    }
     // const result=calculation(count); //calling calculation
     const result = useMemo(()=>{
         return calculation(count);
     },[count])
 
+    const test = useMemo(()=>{
+        return process(text)
+    },[text])
     return (
         <div>
             <h3>Use Memo HookDemo</h3>
@@ -27,6 +36,7 @@ function UseMemoDemo() {
             <h3>Text: {text}</h3>
 
             <h3>Result: {result}</h3>
+            <h3>Result of String: {test}</h3>
         </div>
     );
 }
