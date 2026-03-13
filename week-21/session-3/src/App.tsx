@@ -5,6 +5,9 @@ import Contact from "./pages/Contact"
 import Navbar from "./pages/Navbar"
 import Users from "./components/Users"
 import UserDetails from "./components/UsersDetails"
+import Dashboard from "./pages/Dashboard"
+import Skills from "./pages/Skills"
+import Projects from "./pages/Project"
 
 function App() {
 
@@ -12,10 +15,17 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route index element={<Home />} /> 
+        {/* index for defaultr Path */}
+        {/* <Route path="/" element={<Home />} /> */}
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/users" element={<Users />} />
+        <Route  path="/dashboard" element={<Dashboard />} >
+          {/* Nested */}
+          <Route index  path="skills" element={<Skills />} />
+          <Route path="projects" element={<Projects />} />
+        </Route>
         <Route path="/users/:id" element={<UserDetails />} />
       </Routes>
     </BrowserRouter>
