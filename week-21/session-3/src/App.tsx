@@ -3,6 +3,8 @@ import Home from "./pages/Home"
 import About from "./pages/About"
 import Contact from "./pages/Contact"
 import Navbar from "./pages/Navbar"
+import Users from "./components/Users"
+import UserDetails from "./components/UsersDetails"
 
 function App() {
 
@@ -13,6 +15,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/users/:id" element={<UserDetails />} />
       </Routes>
     </BrowserRouter>
   )
