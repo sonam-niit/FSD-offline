@@ -1,11 +1,15 @@
+import { useState } from "react";
+
 function BuggyComponent() {
-    const throwError=()=>{
-        throw new Error("Crash!");
+    const [crash,setCrash]=useState(false)
+    
+    if(crash){
+        throw new Error("Crash!!")
     }
     return ( 
         <>
             <h3>Buggy Component</h3>
-            <button onClick={throwError}>Crash App</button>
+            <button onClick={()=>setCrash(true)}>Crash App</button>
         </>
      );
 }
